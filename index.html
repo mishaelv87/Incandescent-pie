@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No-Code AI System - Ready to Deploy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .app-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            min-height: 600px;
+        }
+        
+        .app-header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .user-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-success {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #229954;
+        }
+        
+        .main-content {
+            display: flex;
+            height: 500px;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background: #f8f9fa;
+            border-right: 1px solid #e9ecef;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+        
+        .component-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            cursor: grab;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        
+        .component-item:hover {
+            border-color: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+        }
+        
+        .component-item:active {
+            cursor: grabbing;
+        }
+        
+        .component-icon {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        
+        .component-ai { border-left: 4px solid #e74c3c; }
+        .component-trigger { border-left: 4px solid #9b59b6; }
+        .component-action { border-left: 4px solid #27ae60; }
+        .component-logic { border-left: 4px solid #f39c12; }
+        
+        .canvas {
+            flex: 1;
+            background: 
+                radial-gradient(circle at 20px 20px, #e9ecef 1px, transparent 1px),
+                radial-gradient(circle at 20px 20px, #e9ecef 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .canvas-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+        }
+        
+        .workflow-node {
+            position: absolute;
+            width: 160px;
+            height: 80px;
+            background: white;
+            border: 2px solid #3498db;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: move;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .workflow-node:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .workflow-node.ai-node {
+            border-color: #e74c3c;
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+        }
+        
+        .workflow-node.trigger-node {
+            border-color: #9b59b6;
+            background: linear-gradient(135deg, #faf5ff 0%, #e9d5ff 100%);
+        }
+        
+        .workflow-node.action-node {
+            border-color: #27ae60;
+            background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+        }
+        
+        .workflow-node.logic-node {
+            border-color: #f39c12;
+            background: linear-gradient(135deg, #fffbeb 0%, #fed7aa 100%);
+        }
+        
+        .empty-state {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #6c757d;
+            pointer-events: none;
+        }
+        
+        .empty-state h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            opacity: 0.7;
+        }
+        
+        .empty-state p {
+            font-size: 16px;
+            opacity: 0.5;
+        }
+        
+        .status-bar {
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            font-size: 14px;
+            color: #6c757d;
+        }
+        
+        .status-left {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .status-right {
+            margin-left: auto;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: 200px;
+                border-right: none;
+                border-bottom: 1px solid #e9ecef;
+                overflow-x: auto;
+                overflow-y: hidden;
+                white-space: nowrap;
+                padding: 15px;
+            }
+            
+            .component-item {
+                display: inline-flex;
+                margin-right: 10px;
+                margin-bottom: 0;
+                min-width: 140px;
+            }
+            
+            .canvas {
+                height: 400px;
+                min-height: 400px;
+            }
+            
+            .workflow-node {
+                width: 140px;
+                height: 70px;
+                font-size: 14px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes nodeAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .workflow-node {
+            animation: nodeAppear 0.3s ease-out;
+        }
+        
+        /* Drag and Drop Visual Feedback */
+        .canvas.drag-over {
+            background-color: #e3f2fd;
+        }
+        
+        .component-item.dragging {
+            opacity: 0.5;
+            transform: rotate(5deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 No-Code AI System Builder</h1>
+            <p>Drag components to create AI-powered workflows</p>
+        </div>
+        
+        <div class="app-container">
+            <div class="app-header">
+                <div class="logo">⚡ NoCode AI</div>
+                <div class="user-actions">
+                    <button class="btn btn-primary" onclick="saveWorkflow()">💾 Save</button>
+                    <button class="btn btn-success" onclick="runWorkflow()">▶️ Run</button>
+                    <button class="btn btn-primary" onclick="showHelp()">❓ Help</button>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <div class="sidebar">
+                    <h3>🧩 Components</h3>
+                    
+                    <div class="
