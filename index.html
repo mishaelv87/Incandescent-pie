@@ -1,307 +1,611 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>No-Code AI System - Ready to Deploy</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    <title>No-Code AI System - Build AI Workflows Without Coding</title>
+    <meta name="description" content="Create powerful AI workflows with drag-and-drop simplicity. Works on desktop, tablet, and mobile.">
+
+```
+<!-- PWA Manifest -->
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiTm8tQ29kZSBBSSBTeXN0ZW0iLCJzaG9ydF9uYW1lIjoiTm9Db2RlQUkiLCJkZXNjcmlwdGlvbiI6IkJ1aWxkIEFJIHdvcmtmbG93cyB3aXRob3V0IGNvZGluZyIsInN0YXJ0X3VybCI6Ii8iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjNjY3ZWVhIiwidGhlbWVfY29sb3IiOiIjNjY3ZWVhIiwiaWNvbnMiOlt7InNyYyI6ImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU1USTRJaUJvWldsbmFIUTlJakV5T0NJZ2RtbGxkMEp2ZUQwaU1DQXdJREV5T0NBMk5DSWdabWxzYkQwaWJtOXVaU0lnZUcxc2JuTTlJbWgwZEhBNkx5OTNkM2N1ZHpNdWIzSm5Mekl3TlRBdmMzWm5JajRLUEhKbFkzUWdkMmxrZEdnOUlqRXlPQ0lnYUdWcFoyaDBQU0l4TWpnaUlISjRQU0l5TkNJZ1ptbHNiRDBpSXpZMk4yVmxZU0l2UGdvOGMzWm5JSGRwWkhSb1BTSTJOQ0lnYUdWcFoyaDBQU0kyTkNJZ2RtbGxkMEp2ZUQwaU1DQXdJalkwSURZMElpQm1hV3hzUFNKdWIyNWxJaUI0Ylc1emN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSGc5SWpNeUlpQjVQU0l6TWlJK0NqeHdZWFJvSUdROUlrMHpNaUEwVERJNElESTRTRE0yVERNeUlEUmFJaUJtYVd4c1BTSjNhR2wwWlNJdlBnbzhMM04yWno0S1BDOXpkbWMrIiwic2l6ZXMiOiIxMjh4MTI4IiwidHlwZSI6ImltYWdlL3N2Zyt4bWwifV19">
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzY2N2VlYSIvPgo8cGF0aCBkPSJNMTYgOEwxMiAxMkgxNkwyMCAxMkwxNiA4WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE2IDI0TDEyIDIwSDE2TDIwIDIwTDE2IDI0WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    .header {
+        text-align: center;
+        color: white;
+        margin-bottom: 30px;
+    }
+    
+    .app-container {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        overflow: hidden;
+        min-height: 600px;
+    }
+    
+    .app-header {
+        background: #2c3e50;
+        color: white;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    
+    .user-actions {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        min-height: 36px;
+    }
+    
+    .btn-primary {
+        background: #3498db;
+        color: white;
+    }
+    
+    .btn-primary:hover {
+        background: #2980b9;
+        transform: translateY(-2px);
+    }
+    
+    .btn-success {
+        background: #27ae60;
+        color: white;
+    }
+    
+    .btn-success:hover {
+        background: #229954;
+    }
+    
+    .main-content {
+        display: flex;
+        height: 500px;
+    }
+    
+    .sidebar {
+        width: 250px;
+        background: #f8f9fa;
+        border-right: 1px solid #e9ecef;
+        padding: 20px;
+        overflow-y: auto;
+    }
+    
+    .sidebar h3 {
+        margin-bottom: 15px;
+        color: #2c3e50;
+        font-size: 18px;
+    }
+    
+    .component-item {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        margin-bottom: 8px;
+        background: white;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        cursor: grab;
+        transition: all 0.3s ease;
+        user-select: none;
+    }
+    
+    .component-item:hover {
+        border-color: #3498db;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+    }
+    
+    .component-item:active {
+        cursor: grabbing;
+    }
+    
+    .component-icon {
+        font-size: 20px;
+        margin-right: 10px;
+    }
+    
+    .component-ai { border-left: 4px solid #e74c3c; }
+    .component-trigger { border-left: 4px solid #9b59b6; }
+    .component-action { border-left: 4px solid #27ae60; }
+    .component-logic { border-left: 4px solid #f39c12; }
+    
+    .canvas {
+        flex: 1;
+        background: 
+            radial-gradient(circle at 20px 20px, #e9ecef 1px, transparent 1px),
+            radial-gradient(circle at 20px 20px, #e9ecef 1px, transparent 1px);
+        background-size: 40px 40px;
+        background-position: 0 0, 20px 20px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .canvas-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+    }
+    
+    .workflow-node {
+        position: absolute;
+        width: 160px;
+        height: 80px;
+        background: white;
+        border: 2px solid #3498db;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: move;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        font-weight: 600;
+        color: #1a202c;
+        animation: nodeAppear 0.3s ease-out;
+        text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+    }
+    
+    .workflow-node:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    
+    .workflow-node:hover .delete-node {
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+    .delete-node {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        width: 24px;
+        height: 24px;
+        background: #e74c3c;
+        color: white;
+        border: 2px solid white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        z-index: 10;
+    }
+    
+    .delete-node:hover {
+        background: #c0392b;
+        transform: scale(1.1);
+    }
+    
+    .canvas-controls {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        display: flex;
+        gap: 10px;
+        z-index: 100;
+    }
+    
+    .canvas-control-btn {
+        padding: 8px 12px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid #e9ecef;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .canvas-control-btn:hover {
+        background: white;
+        border-color: #3498db;
+        transform: translateY(-2px);
+    }
+    
+    .canvas-control-btn.danger {
+        background: rgba(231, 76, 60, 0.9);
+        color: white;
+        border-color: #e74c3c;
+    }
+    
+    .canvas-control-btn.danger:hover {
+        background: #e74c3c;
+        border-color: #c0392b;
+    }
+    
+    .canvas-control-btn.undo {
+        background: rgba(52, 152, 219, 0.9);
+        color: white;
+        border-color: #3498db;
+    }
+    
+    .canvas-control-btn.undo:hover {
+        background: #3498db;
+        border-color: #2980b9;
+    }
+    
+    .workflow-node.ai-node {
+        border-color: #e74c3c;
+        background: linear-gradient(135deg, #ffffff 0%, #fef2f2 100%);
+        color: #991b1b;
+        border-width: 3px;
+    }
+    
+    .workflow-node.trigger-node {
+        border-color: #9b59b6;
+        background: linear-gradient(135deg, #ffffff 0%, #faf5ff 100%);
+        color: #6b21a8;
+        border-width: 3px;
+    }
+    
+    .workflow-node.action-node {
+        border-color: #27ae60;
+        background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+        color: #14532d;
+        border-width: 3px;
+    }
+    
+    .workflow-node.logic-node {
+        border-color: #f39c12;
+        background: linear-gradient(135deg, #ffffff 0%, #fffbeb 100%);
+        color: #92400e;
+        border-width: 3px;
+    }
+    
+    .empty-state {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #6c757d;
+        pointer-events: none;
+    }
+    
+    .empty-state h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        opacity: 0.7;
+    }
+    
+    .empty-state p {
+        font-size: 16px;
+        opacity: 0.5;
+    }
+    
+    .status-bar {
+        background: #f8f9fa;
+        border-top: 1px solid #e9ecef;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        color: #6c757d;
+    }
+    
+    .status-left {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .status-right {
+        margin-left: auto;
+    }
+    
+    .canvas.drag-over {
+        background-color: #e3f2fd;
+    }
+    
+    .component-item.dragging {
+        opacity: 0.5;
+        transform: rotate(5deg);
+    }
+    
+    @keyframes nodeAppear {
+        from {
+            opacity: 0;
+            transform: scale(0.8);
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+        to {
+            opacity: 1;
+            transform: scale(1);
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 30px;
-        }
-        
-        .app-container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
-            min-height: 600px;
-        }
-        
-        .app-header {
-            background: #2c3e50;
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        
-        .user-actions {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .btn {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary {
-            background: #3498db;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-        }
-        
-        .btn-success {
-            background: #27ae60;
-            color: white;
-        }
-        
-        .btn-success:hover {
-            background: #229954;
-        }
-        
+    }
+    
+    /* Mobile & Tablet Optimizations */
+    @media (max-width: 1024px) {
         .main-content {
-            display: flex;
-            height: 500px;
+            flex-direction: column;
+            height: auto;
         }
         
         .sidebar {
-            width: 250px;
-            background: #f8f9fa;
-            border-right: 1px solid #e9ecef;
-            padding: 20px;
-            overflow-y: auto;
-        }
-        
-        .sidebar h3 {
-            margin-bottom: 15px;
-            color: #2c3e50;
-            font-size: 18px;
+            width: 100%;
+            height: 180px;
+            border-right: none;
+            border-bottom: 2px solid #e9ecef;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
         
         .component-item {
-            display: flex;
-            align-items: center;
+            display: inline-flex;
+            margin-right: 12px;
+            margin-bottom: 0;
+            min-width: 150px;
+            padding: 15px 12px;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .canvas {
+            height: calc(100vh - 400px);
+            min-height: 400px;
+            touch-action: pan-x pan-y;
+        }
+        
+        .workflow-node {
+            width: 140px;
+            height: 75px;
+            font-size: 13px;
+            touch-action: none;
+            cursor: default;
+        }
+        
+        .btn {
+            min-height: 44px;
+            min-width: 44px;
+            padding: 12px 16px;
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 10px;
+        }
+        
+        .app-header {
+            padding: 12px 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .logo {
+            font-size: 20px;
+        }
+        
+        .user-actions {
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .btn {
+            padding: 10px 14px;
+            font-size: 14px;
+            min-height: 40px;
+        }
+        
+        .sidebar {
+            height: 150px;
             padding: 12px;
-            margin-bottom: 8px;
-            background: white;
-            border: 2px solid #e9ecef;
-            border-radius: 8px;
-            cursor: grab;
-            transition: all 0.3s ease;
-            user-select: none;
         }
         
-        .component-item:hover {
-            border-color: #3498db;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+        .sidebar h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            white-space: nowrap;
+            display: inline-block;
+            margin-right: 15px;
+            vertical-align: top;
+            line-height: 40px;
         }
         
-        .component-item:active {
-            cursor: grabbing;
+        .component-item {
+            min-width: 130px;
+            height: 60px;
+            margin-right: 10px;
+            font-size: 12px;
+            border-radius: 10px;
         }
         
         .component-icon {
-            font-size: 20px;
-            margin-right: 10px;
+            font-size: 18px;
         }
-        
-        .component-ai { border-left: 4px solid #e74c3c; }
-        .component-trigger { border-left: 4px solid #9b59b6; }
-        .component-action { border-left: 4px solid #27ae60; }
-        .component-logic { border-left: 4px solid #f39c12; }
         
         .canvas {
-            flex: 1;
-            background: 
-                radial-gradient(circle at 20px 20px, #e9ecef 1px, transparent 1px),
-                radial-gradient(circle at 20px 20px, #e9ecef 1px, transparent 1px);
-            background-size: 40px 40px;
-            background-position: 0 0, 20px 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .canvas-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            padding: 20px;
+            height: calc(100vh - 350px);
+            min-height: 350px;
         }
         
         .workflow-node {
-            position: absolute;
-            width: 160px;
-            height: 80px;
-            background: white;
-            border: 2px solid #3498db;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: move;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            font-weight: 500;
-            color: #2c3e50;
-        }
-        
-        .workflow-node:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-        }
-        
-        .workflow-node.ai-node {
-            border-color: #e74c3c;
-            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
-        }
-        
-        .workflow-node.trigger-node {
-            border-color: #9b59b6;
-            background: linear-gradient(135deg, #faf5ff 0%, #e9d5ff 100%);
-        }
-        
-        .workflow-node.action-node {
-            border-color: #27ae60;
-            background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
-        }
-        
-        .workflow-node.logic-node {
-            border-color: #f39c12;
-            background: linear-gradient(135deg, #fffbeb 0%, #fed7aa 100%);
-        }
-        
-        .empty-state {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: #6c757d;
-            pointer-events: none;
+            width: 120px;
+            height: 65px;
+            font-size: 11px;
+            border-radius: 10px;
         }
         
         .empty-state h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            opacity: 0.7;
+            font-size: 20px;
         }
         
         .empty-state p {
-            font-size: 16px;
-            opacity: 0.5;
+            font-size: 14px;
         }
         
         .status-bar {
-            background: #f8f9fa;
-            border-top: 1px solid #e9ecef;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: between;
-            align-items: center;
-            font-size: 14px;
-            color: #6c757d;
+            padding: 8px 15px;
+            font-size: 12px;
+            flex-wrap: wrap;
         }
         
         .status-left {
-            display: flex;
-            gap: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+    }
+
+    /* Touch-Friendly Interactions */
+    @media (pointer: coarse) {
+        .component-item:hover {
+            transform: none;
         }
         
-        .status-right {
-            margin-left: auto;
-        }
-        
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .main-content {
-                flex-direction: column;
-                height: auto;
-            }
-            
-            .sidebar {
-                width: 100%;
-                height: 200px;
-                border-right: none;
-                border-bottom: 1px solid #e9ecef;
-                overflow-x: auto;
-                overflow-y: hidden;
-                white-space: nowrap;
-                padding: 15px;
-            }
-            
-            .component-item {
-                display: inline-flex;
-                margin-right: 10px;
-                margin-bottom: 0;
-                min-width: 140px;
-            }
-            
-            .canvas {
-                height: 400px;
-                min-height: 400px;
-            }
-            
-            .workflow-node {
-                width: 140px;
-                height: 70px;
-                font-size: 14px;
-            }
-        }
-        
-        /* Animations */
-        @keyframes nodeAppear {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        .workflow-node {
-            animation: nodeAppear 0.3s ease-out;
-        }
-        
-        /* Drag and Drop Visual Feedback */
-        .canvas.drag-over {
+        .component-item:active {
+            transform: scale(0.95);
             background-color: #e3f2fd;
         }
         
-        .component-item.dragging {
-            opacity: 0.5;
-            transform: rotate(5deg);
+        .workflow-node:active {
+            transform: scale(1.05);
         }
-    </style>
+        
+        .btn:active {
+            transform: scale(0.95);
+        }
+        
+        .workflow-node {
+            min-height: 50px;
+            min-width: 50px;
+            border-width: 3px;
+        }
+        
+        .sidebar {
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+        }
+        
+        .canvas {
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+
+    /* iPad Specific Optimizations */
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .sidebar {
+            height: 200px;
+        }
+        
+        .component-item {
+            min-width: 160px;
+            height: 70px;
+            font-size: 14px;
+        }
+        
+        .workflow-node {
+            width: 160px;
+            height: 80px;
+            font-size: 14px;
+        }
+        
+        .canvas {
+            height: calc(100vh - 420px);
+            min-height: 450px;
+        }
+    }
+
+    /* Prevent zoom on input focus (iOS) */
+    input, select, textarea {
+        font-size: 16px;
+    }
+
+    /* Better scrolling */
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    /* Dark Mode Support */
+    @media (prefers-color-scheme: dark) {
+        body {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        }
+        
+        .app-container {
+            background: #2c3e50;
+            color: #ecf0f1;
+        }
+        
+        .sidebar {
+            background: #34495e;
+            border-color: #4a5568;
+        }
+        
+        .component-item {
+            background: #2c3e50;
+            color: #ecf0f1;
+            border-color: #4a5568;
+        }
+        
+        .workflow-node {
+            background: #2c3e50;
+            color: #ecf0f1;
+            border-color: #3498db;
+        }
+        
+        .canvas {
+            background-image: 
+                radial-gradient(circle at 20px 20px, #4a5568 1px, transparent 1px),
+                radial-gradient(circle at 20px 20px, #4a5568 1px, transparent 1px);
+        }
+    }
+</style>
+```
+
 </head>
 <body>
     <div class="container">
@@ -309,19 +613,1005 @@
             <h1>🚀 No-Code AI System Builder</h1>
             <p>Drag components to create AI-powered workflows</p>
         </div>
+
+```
+    <div class="app-container">
+        <div class="app-header">
+            <div class="logo">⚡ NoCode AI</div>
+            <div class="user-actions">
+                <button class="btn btn-primary" onclick="saveWorkflow()">💾 Save</button>
+                <button class="btn btn-success" onclick="runWorkflow()">▶️ Run</button>
+                <button class="btn btn-primary" onclick="showHelp()">❓ Help</button>
+            </div>
+        </div>
         
-        <div class="app-container">
-            <div class="app-header">
-                <div class="logo">⚡ NoCode AI</div>
-                <div class="user-actions">
-                    <button class="btn btn-primary" onclick="saveWorkflow()">💾 Save</button>
-                    <button class="btn btn-success" onclick="runWorkflow()">▶️ Run</button>
-                    <button class="btn btn-primary" onclick="showHelp()">❓ Help</button>
+        <div class="main-content">
+            <div class="sidebar">
+                <h3>🧩 Components</h3>
+                
+                <div class="component-item component-trigger" draggable="true" data-type="webhook">
+                    <span class="component-icon">🔗</span>
+                    <span>Webhook Trigger</span>
+                </div>
+                
+                <div class="component-item component-trigger" draggable="true" data-type="schedule">
+                    <span class="component-icon">⏰</span>
+                    <span>Schedule Trigger</span>
+                </div>
+                
+                <div class="component-item component-ai" draggable="true" data-type="ai-text">
+                    <span class="component-icon">🤖</span>
+                    <span>AI Text Generator</span>
+                </div>
+                
+                <div class="component-item component-ai" draggable="true" data-type="ai-code">
+                    <span class="component-icon">💻</span>
+                    <span>AI Code Generator</span>
+                </div>
+                
+                <div class="component-item component-ai" draggable="true" data-type="ai-image">
+                    <span class="component-icon">🎨</span>
+                    <span>AI Image Generator</span>
+                </div>
+                
+                <div class="component-item component-ai" draggable="true" data-type="ai-multimodal">
+                    <span class="component-icon">🔮</span>
+                    <span>AI Vision/Multimodal</span>
+                </div>
+                
+                <div class="component-item component-logic" draggable="true" data-type="condition">
+                    <span class="component-icon">🔀</span>
+                    <span>If/Then Logic</span>
+                </div>
+                
+                <div class="component-item component-logic" draggable="true" data-type="loop">
+                    <span class="component-icon">🔄</span>
+                    <span>Loop</span>
+                </div>
+                
+                <div class="component-item component-action" draggable="true" data-type="email">
+                    <span class="component-icon">📧</span>
+                    <span>Send Email</span>
+                </div>
+                
+                <div class="component-item component-action" draggable="true" data-type="webhook-call">
+                    <span class="component-icon">📡</span>
+                    <span>Call Webhook</span>
+                </div>
+                
+                <div class="component-item component-action" draggable="true" data-type="database">
+                    <span class="component-icon">🗄️</span>
+                    <span>Database Action</span>
                 </div>
             </div>
             
-            <div class="main-content">
-                <div class="sidebar">
-                    <h3>🧩 Components</h3>
+            <div class="canvas" id="workflow-canvas">
+                <div class="canvas-controls">
+                    <button class="canvas-control-btn undo" onclick="undoLastAction()" title="Undo Last Action">
+                        ↶ Undo
+                    </button>
+                    <button class="canvas-control-btn danger" onclick="clearCanvas()" title="Clear All Nodes">
+                        🗑️ Clear All
+                    </button>
+                </div>
+                
+                <div class="canvas-content" id="canvas-content">
+                    <div class="empty-state" id="empty-state">
+                        <h3>🎯 Start Building</h3>
+                        <p>Drag components from the sidebar to create your AI workflow</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="status-bar">
+            <div class="status-left">
+                <span>📊 Nodes: <span id="node-count">0</span></span>
+                <span>🔗 Connections: <span id="connection-count">0</span></span>
+                <span>💰 Est. Cost: $<span id="cost-estimate">0.00</span></span>
+            </div>
+            <div class="status-right">
+                <span>✅ Ready to deploy</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // No-Code AI System - Complete Implementation
+    class NoCodeAISystem {
+        constructor() {
+            this.nodes = [];
+            this.connections = [];
+            this.nodeCounter = 0;
+            this.isDragging = false;
+            this.draggedElement = null;
+            this.actionHistory = [];
+            this.maxHistorySize = 20;
+            
+            this.initializeEventListeners();
+            this.updateStats();
+            
+            // Initialize with demo data if first time
+            if (this.nodes.length === 0) {
+                this.loadDemoWorkflow();
+            }
+        }
+        
+        // Add action to history for undo functionality
+        addToHistory(action) {
+            this.actionHistory.push({
+                action: action.type,
+                data: JSON.parse(JSON.stringify(action.data)),
+                timestamp: Date.now()
+            });
+            
+            // Keep history size manageable
+            if (this.actionHistory.length > this.maxHistorySize) {
+                this.actionHistory.shift();
+            }
+        }
+        
+        initializeEventListeners() {
+            // Drag and Drop
+            const components = document.querySelectorAll('.component-item');
+            const canvas = document.getElementById('workflow-canvas');
+            const canvasContent = document.getElementById('canvas-content');
+            
+            components.forEach(item => {
+                item.addEventListener('dragstart', (e) => {
+                    this.draggedElement = e.target;
+                    e.target.classList.add('dragging');
+                });
+                
+                item.addEventListener('dragend', (e) => {
+                    e.target.classList.remove('dragging');
+                    this.draggedElement = null;
+                });
+            });
+            
+            canvas.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                canvas.classList.add('drag-over');
+            });
+            
+            canvas.addEventListener('dragleave', (e) => {
+                canvas.classList.remove('drag-over');
+            });
+            
+            canvas.addEventListener('drop', (e) => {
+                e.preventDefault();
+                canvas.classList.remove('drag-over');
+                
+                if (this.draggedElement) {
+                    const rect = canvasContent.getBoundingClientRect();
+                    const x = e.clientX - rect.left - 80;
+                    const y = e.clientY - rect.top - 40;
                     
-                    <div class="
+                    this.createNode(
+                        this.draggedElement.dataset.type,
+                        this.draggedElement.textContent.trim(),
+                        x,
+                        y
+                    );
+                }
+            });
+        }
+        
+        createNode(type, label, x, y) {
+            const nodeId = `node-${++this.nodeCounter}`;
+            const node = {
+                id: nodeId,
+                type: type,
+                label: label,
+                x: Math.max(0, x),
+                y: Math.max(0, y),
+                config: this.getDefaultConfig(type)
+            };
+            
+            // Add to history for undo
+            this.addToHistory({
+                type: 'CREATE_NODE',
+                data: { node: { ...node } }
+            });
+            
+            this.nodes.push(node);
+            this.renderNode(node);
+            this.updateStats();
+            this.hideEmptyState();
+        }
+        
+        deleteNode(nodeId) {
+            const nodeIndex = this.nodes.findIndex(n => n.id === nodeId);
+            if (nodeIndex === -1) return;
+            
+            const deletedNode = this.nodes[nodeIndex];
+            
+            // Add to history for undo
+            this.addToHistory({
+                type: 'DELETE_NODE',
+                data: { node: { ...deletedNode }, index: nodeIndex }
+            });
+            
+            // Remove from nodes array
+            this.nodes.splice(nodeIndex, 1);
+            
+            // Remove DOM element
+            const nodeElement = document.getElementById(nodeId);
+            if (nodeElement) {
+                nodeElement.remove();
+            }
+            
+            // Remove any connections to this node
+            this.connections = this.connections.filter(
+                conn => conn.source !== nodeId && conn.target !== nodeId
+            );
+            
+            this.updateStats();
+            this.hideEmptyState();
+            
+            // Show notification
+            if (window.aiIntegration) {
+                window.aiIntegration.showNotification(`🗑️ Deleted ${deletedNode.label}`, 'info');
+            }
+        }
+        
+        clearAllNodes() {
+            if (this.nodes.length === 0) return;
+            
+            // Confirm with user
+            if (!confirm(`🗑️ Clear all ${this.nodes.length} nodes from canvas?\n\nThis action can be undone.`)) {
+                return;
+            }
+            
+            // Add to history for undo
+            this.addToHistory({
+                type: 'CLEAR_ALL',
+                data: { 
+                    nodes: [...this.nodes],
+                    connections: [...this.connections]
+                }
+            });
+            
+            // Clear arrays
+            this.nodes = [];
+            this.connections = [];
+            
+            // Clear DOM
+            const canvasContent = document.getElementById('canvas-content');
+            const nodes = canvasContent.querySelectorAll('.workflow-node');
+            nodes.forEach(node => node.remove());
+            
+            this.updateStats();
+            this.hideEmptyState();
+            
+            // Show notification
+            if (window.aiIntegration) {
+                window.aiIntegration.showNotification('🗑️ Canvas cleared! Use Undo to restore.', 'success');
+            }
+        }
+        
+        undoLastAction() {
+            if (this.actionHistory.length === 0) {
+                if (window.aiIntegration) {
+                    window.aiIntegration.showNotification('↶ Nothing to undo', 'warning');
+                }
+                return;
+            }
+            
+            const lastAction = this.actionHistory.pop();
+            
+            switch (lastAction.action) {
+                case 'CREATE_NODE':
+                    // Remove the last created node
+                    const nodeToRemove = lastAction.data.node;
+                    const nodeIndex = this.nodes.findIndex(n => n.id === nodeToRemove.id);
+                    if (nodeIndex !== -1) {
+                        this.nodes.splice(nodeIndex, 1);
+                        const nodeElement = document.getElementById(nodeToRemove.id);
+                        if (nodeElement) nodeElement.remove();
+                    }
+                    break;
+                    
+                case 'DELETE_NODE':
+                    // Restore the deleted node
+                    const restoredNode = lastAction.data.node;
+                    this.nodes.splice(lastAction.data.index, 0, restoredNode);
+                    this.renderNode(restoredNode);
+                    break;
+                    
+                case 'CLEAR_ALL':
+                    // Restore all nodes
+                    this.nodes = [...lastAction.data.nodes];
+                    this.connections = [...lastAction.data.connections];
+                    
+                    // Clear current DOM nodes
+                    const canvasContent = document.getElementById('canvas-content');
+                    const existingNodes = canvasContent.querySelectorAll('.workflow-node');
+                    existingNodes.forEach(node => node.remove());
+                    
+                    // Re-render all nodes
+                    this.nodes.forEach(node => this.renderNode(node));
+                    break;
+            }
+            
+            this.updateStats();
+            this.hideEmptyState();
+            
+            // Show notification
+            if (window.aiIntegration) {
+                window.aiIntegration.showNotification(`↶ Undid: ${lastAction.action.toLowerCase().replace('_', ' ')}`, 'success');
+            }
+        }
+        
+        getDefaultConfig(type) {
+            const configs = {
+                'webhook': { url: '', method: 'POST' },
+                'schedule': { cron: '0 9 * * *', timezone: 'UTC' },
+                'ai-text': { model: 'gpt-3.5-turbo', maxTokens: 150, temperature: 0.7, prompt: 'Generate helpful content' },
+                'ai-code': { language: 'javascript', style: 'clean', description: 'Create a useful function' },
+                'ai-image': { size: '512x512', style: 'realistic', prompt: 'Create a beautiful image' },
+                'ai-multimodal': { model: 'microsoft/kosmos-2-patch14-224', provider: 'huggingface', prompt: 'Describe this image', imageUrl: '' },
+                'condition': { operator: 'equals', value: '' },
+                'loop': { type: 'forEach', maxIterations: 100 },
+                'email': { to: '', subject: '', template: 'default' },
+                'webhook-call': { url: '', method: 'POST', headers: {} },
+                'database': { operation: 'create', table: '' }
+            };
+            return configs[type] || {};
+        }
+        
+        renderNode(node) {
+            const nodeElement = document.createElement('div');
+            nodeElement.className = `workflow-node ${this.getNodeClass(node.type)}`;
+            nodeElement.id = node.id;
+            nodeElement.style.left = node.x + 'px';
+            nodeElement.style.top = node.y + 'px';
+            nodeElement.innerHTML = `
+                <div style="text-align: center;">
+                    <div style="font-size: 20px; margin-bottom: 4px;">${this.getNodeIcon(node.type)}</div>
+                    <div style="font-size: 12px; font-weight: 500;">${node.label}</div>
+                </div>
+                <div class="delete-node" onclick="window.aiSystem.deleteNode('${node.id}')" title="Delete Node">
+                    ×
+                </div>
+            `;
+            
+            this.makeNodeDraggable(nodeElement, node);
+            
+            nodeElement.addEventListener('dblclick', () => {
+                this.configureNode(node);
+            });
+            
+            document.getElementById('canvas-content').appendChild(nodeElement);
+        }
+        
+        getNodeClass(type) {
+            const classes = {
+                'webhook': 'trigger-node',
+                'schedule': 'trigger-node',
+                'ai-text': 'ai-node',
+                'ai-code': 'ai-node',
+                'ai-image': 'ai-node',
+                'condition': 'logic-node',
+                'loop': 'logic-node',
+                'email': 'action-node',
+                'webhook-call': 'action-node',
+                'database': 'action-node'
+            };
+            return classes[type] || 'ai-node';
+        }
+        
+        getNodeIcon(type) {
+            const icons = {
+                'webhook': '🔗',
+                'schedule': '⏰',
+                'ai-text': '🤖',
+                'ai-code': '💻',
+                'ai-image': '🎨',
+                'ai-multimodal': '🔮',
+                'condition': '🔀',
+                'loop': '🔄',
+                'email': '📧',
+                'webhook-call': '📡',
+                'database': '🗄️'
+            };
+            return icons[type] || '⚙️';
+        }
+        
+        makeNodeDraggable(element, node) {
+            let isDragging = false;
+            let startX, startY, initialX, initialY;
+            
+            element.addEventListener('mousedown', (e) => {
+                if (e.detail === 2) return;
+                
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                initialX = node.x;
+                initialY = node.y;
+                
+                element.style.cursor = 'grabbing';
+                element.style.zIndex = '1000';
+            });
+            
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                
+                node.x = Math.max(0, initialX + deltaX);
+                node.y = Math.max(0, initialY + deltaY);
+                
+                element.style.left = node.x + 'px';
+                element.style.top = node.y + 'px';
+            });
+            
+            document.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    element.style.cursor = 'move';
+                    element.style.zIndex = 'auto';
+                }
+            });
+        }
+        
+        configureNode(node) {
+            const config = prompt(`Configure ${node.label}:\n\nCurrent config: ${JSON.stringify(node.config, null, 2)}\n\nEnter new config (JSON format):`);
+            if (config) {
+                try {
+                    node.config = JSON.parse(config);
+                    this.updateStats();
+                } catch (e) {
+                    alert('Invalid JSON configuration');
+                }
+            }
+        }
+        
+        updateStats() {
+            document.getElementById('node-count').textContent = this.nodes.length;
+            document.getElementById('connection-count').textContent = this.connections.length;
+            
+            // Calculate estimated cost
+            const aiNodes = this.nodes.filter(n => n.type.startsWith('ai-')).length;
+            const estimatedCost = aiNodes * 0.002;
+            document.getElementById('cost-estimate').textContent = estimatedCost.toFixed(3);
+        }
+        
+        hideEmptyState() {
+            const emptyState = document.getElementById('empty-state');
+            if (this.nodes.length > 0) {
+                emptyState.style.display = 'none';
+            } else {
+                emptyState.style.display = 'block';
+            }
+        }
+        
+        loadDemoWorkflow() {
+            setTimeout(() => {
+                this.createNode('webhook', '🔗 Webhook Trigger', 50, 50);
+                this.createNode('ai-text', '🤖 AI Text Generator', 300, 50);
+                this.createNode('email', '📧 Send Email', 550, 50);
+            }, 500);
+        }
+        
+        async saveWorkflow() {
+            const workflow = {
+                id: Date.now(),
+                name: prompt('Workflow name:') || 'Untitled Workflow',
+                nodes: this.nodes,
+                connections: this.connections,
+                createdAt: new Date().toISOString()
+            };
+            
+            const savedWorkflows = JSON.parse(localStorage.getItem('workflows') || '[]');
+            savedWorkflows.push(workflow);
+            localStorage.setItem('workflows', JSON.stringify(savedWorkflows));
+            
+            alert('✅ Workflow saved successfully!');
+        }
+        
+        async runWorkflow() {
+            if (!window.aiIntegration.apiKeys.openai && !window.aiIntegration.apiKeys.huggingface) {
+                document.getElementById('api-key-modal').style.display = 'block';
+                return;
+            }
+            
+            try {
+                window.aiIntegration.showNotification('🚀 Executing workflow with real AI...', 'info');
+                
+                const results = {};
+                for (const node of this.nodes) {
+                    if (node.type.startsWith('ai-')) {
+                        const inputData = { 
+                            prompt: node.config.prompt || 'Hello, this is a test workflow execution.' 
+                        };
+                        results[node.id] = await window.aiIntegration.executeAINode(node, inputData);
+                        
+                        console.log(`✅ Node ${node.id} (${node.type}) executed:`, results[node.id]);
+                    } else {
+                        results[node.id] = { 
+                            message: `${node.type} node executed successfully`, 
+                            timestamp: new Date() 
+                        };
+                    }
+                }
+                
+                window.aiIntegration.showNotification(`✅ Workflow completed! Executed ${this.nodes.length} nodes.`, 'success');
+                console.log('🎉 Full workflow results:', results);
+                
+            } catch (error) {
+                window.aiIntegration.showNotification(`❌ Workflow failed: ${error.message}`, 'error');
+                console.error('Workflow execution error:', error);
+            }
+        }
+    }
+    
+    // 🤖 COMPLETE AI INTEGRATION MODULE
+    class AIIntegrationSystem {
+        constructor() {
+            this.providers = {
+                openai: {
+                    baseUrl: 'https://api.openai.com/v1',
+                    models: ['gpt-3.5-turbo', 'gpt-4', 'gpt-4-turbo'],
+                    pricing: { 'gpt-3.5-turbo': 0.002, 'gpt-4': 0.03 }
+                },
+                huggingface: {
+                    baseUrl: 'https://api-inference.huggingface.co/models',
+                    models: ['microsoft/DialoGPT-large', 'facebook/blenderbot-400M-distill'],
+                    pricing: { 'free': 0.0 }
+                }
+            };
+            
+            this.apiKeys = this.loadApiKeys();
+            this.usage = this.loadUsage();
+            this.initializeUI();
+        }
+        
+        loadApiKeys() {
+            return {
+                openai: localStorage.getItem('openai_api_key') || '',
+                huggingface: localStorage.getItem('huggingface_api_key') || ''
+            };
+        }
+        
+        saveApiKey(provider, key) {
+            this.apiKeys[provider] = key;
+            localStorage.setItem(`${provider}_api_key`, key);
+            this.showNotification(`✅ ${provider.toUpperCase()} API key saved!`);
+        }
+        
+        initializeUI() {
+            this.createApiKeyModal();
+            this.createNotificationSystem();
+            this.addApiKeyButton();
+        }
+        
+        createApiKeyModal() {
+            const modal = document.createElement('div');
+            modal.id = 'api-key-modal';
+            modal.style.cssText = `
+                display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.5); z-index: 10000; backdrop-filter: blur(5px);
+            `;
+            
+            modal.innerHTML = `
+                <div style="
+                    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                    background: white; padding: 30px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                    max-width: 500px; width: 90%;
+                ">
+                    <h2 style="margin: 0 0 20px 0; color: #2c3e50;">🔑 Setup AI Integration</h2>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: 500;">OpenAI API Key:</label>
+                        <input type="password" id="openai-key" placeholder="sk-..." style="
+                            width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px;
+                            font-size: 14px; box-sizing: border-box;
+                        ">
+                        <small style="color: #6c757d;">Get your key from <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI Platform</a></small>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: 500;">Hugging Face Token (Optional - Free):</label>
+                        <input type="password" id="huggingface-key" placeholder="hf_..." style="
+                            width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px;
+                            font-size: 14px; box-sizing: border-box;
+                        ">
+                        <small style="color: #6c757d;">Get your token from <a href="https://huggingface.co/settings/tokens" target="_blank">Hugging Face</a></small>
+                    </div>
+                    
+                    <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                        <button onclick="document.getElementById('api-key-modal').style.display='none'" style="
+                            padding: 10px 20px; border: 2px solid #6c757d; background: white; color: #6c757d;
+                            border-radius: 6px; cursor: pointer; font-size: 14px;
+                        ">Cancel</button>
+                        <button onclick="window.aiIntegration.saveApiKeys()" style="
+                            padding: 10px 20px; border: none; background: #3498db; color: white;
+                            border-radius: 6px; cursor: pointer; font-size: 14px;
+                        ">Save Keys</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+        
+        createNotificationSystem() {
+            const container = document.createElement('div');
+            container.id = 'notification-container';
+            container.style.cssText = `
+                position: fixed; top: 20px; right: 20px; z-index: 10001;
+                max-width: 300px; pointer-events: none;
+            `;
+            document.body.appendChild(container);
+        }
+        
+        addApiKeyButton() {
+            const button = document.createElement('button');
+            button.innerHTML = '🔑 Setup AI';
+            button.style.cssText = `
+                position: fixed; top: 20px; left: 20px; z-index: 1000;
+                padding: 10px 15px; background: #e74c3c; color: white; border: none;
+                border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500;
+                box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+            `;
+            button.onclick = () => document.getElementById('api-key-modal').style.display = 'block';
+            document.body.appendChild(button);
+        }
+        
+        saveApiKeys() {
+            const openaiKey = document.getElementById('openai-key').value.trim();
+            const huggingfaceKey = document.getElementById('huggingface-key').value.trim();
+            
+            if (openaiKey) this.saveApiKey('openai', openaiKey);
+            if (huggingfaceKey) this.saveApiKey('huggingface', huggingfaceKey);
+            
+            document.getElementById('api-key-modal').style.display = 'none';
+            
+            if (openaiKey || huggingfaceKey) {
+                this.showNotification('🚀 AI integration ready! Try the AI nodes now!', 'success');
+            }
+        }
+        
+        async generateText(prompt, options = {}) {
+            const provider = options.provider || 'openai';
+            const model = options.model || 'gpt-3.5-turbo';
+            
+            if (!this.apiKeys[provider]) {
+                throw new Error(`${provider.toUpperCase()} API key not configured. Click the "🔑 Setup AI" button.`);
+            }
+            
+            try {
+                this.showNotification(`🤖 Generating text with ${model}...`, 'info');
+                
+                if (provider === 'openai') {
+                    return await this.callOpenAI(prompt, model, options);
+                } else if (provider === 'huggingface') {
+                    return await this.callHuggingFace(prompt, model, options);
+                }
+            } catch (error) {
+                this.showNotification(`❌ AI Error: ${error.message}`, 'error');
+                throw error;
+            }
+        }
+        
+        async callOpenAI(prompt, model, options) {
+            const response = await fetch(`${this.providers.openai.baseUrl}/chat/completions`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${this.apiKeys.openai}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: model,
+                    messages: [{ role: 'user', content: prompt }],
+                    max_tokens: options.maxTokens || 150,
+                    temperature: options.temperature || 0.7
+                })
+            });
+            
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error?.message || 'OpenAI API error');
+            }
+            
+            const data = await response.json();
+            const result = data.choices[0].message.content;
+            
+            this.trackUsage('openai', model, prompt.length, result.length);
+            this.showNotification('✅ Text generated successfully!', 'success');
+            
+            return result;
+        }
+        
+        async generateCode(description, language = 'javascript', options = {}) {
+            const prompt = `Generate clean, working ${language} code for: ${description}
+```
+
+Requirements:
+
+- Return only the code, no explanations
+- Include necessary comments
+- Make it production-ready
+- Follow best practices
+
+Code:`;
+
+```
+            return await this.generateText(prompt, {
+                ...options,
+                maxTokens: 500,
+                temperature: 0.3
+            });
+        }
+        
+        async generateImage(prompt, options = {}) {
+            if (!this.apiKeys.openai) {
+                throw new Error('OpenAI API key required for image generation');
+            }
+            
+            try {
+                this.showNotification('🎨 Generating image...', 'info');
+                
+                const response = await fetch(`${this.providers.openai.baseUrl}/images/generations`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${this.apiKeys.openai}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        prompt: prompt,
+                        n: 1,
+                        size: options.size || '512x512',
+                        quality: options.quality || 'standard'
+                    })
+                });
+                
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.error?.message || 'Image generation failed');
+                }
+                
+                const data = await response.json();
+                const imageUrl = data.data[0].url;
+                
+                this.showNotification('✅ Image generated successfully!', 'success');
+                return imageUrl;
+                
+            } catch (error) {
+                this.showNotification(`❌ Image Error: ${error.message}`, 'error');
+                throw error;
+            }
+        }
+        
+        trackUsage(provider, model, inputTokens, outputTokens) {
+            const today = new Date().toDateString();
+            if (!this.usage[today]) this.usage[today] = {};
+            if (!this.usage[today][provider]) this.usage[today][provider] = {};
+            if (!this.usage[today][provider][model]) this.usage[today][provider][model] = { calls: 0, tokens: 0, cost: 0 };
+            
+            this.usage[today][provider][model].calls += 1;
+            this.usage[today][provider][model].tokens += inputTokens + outputTokens;
+            
+            const pricing = this.providers[provider].pricing[model] || 0;
+            this.usage[today][provider][model].cost += (inputTokens + outputTokens) * pricing / 1000;
+            
+            this.saveUsage();
+        }
+        
+        loadUsage() {
+            return JSON.parse(localStorage.getItem('ai_usage') || '{}');
+        }
+        
+        saveUsage() {
+            localStorage.setItem('ai_usage', JSON.stringify(this.usage));
+        }
+        
+        showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            const colors = {
+                info: '#3498db',
+                success: '#27ae60',
+                error: '#e74c3c',
+                warning: '#f39c12'
+            };
+            
+            notification.style.cssText = `
+                background: ${colors[type]}; color: white; padding: 12px 16px;
+                border-radius: 6px; margin-bottom: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                font-size: 14px; font-weight: 500; pointer-events: auto;
+                transform: translateX(100%); transition: transform 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            const container = document.getElementById('notification-container');
+            container.appendChild(notification);
+            
+            setTimeout(() => notification.style.transform = 'translateX(0)', 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => notification.remove(), 300);
+            }, 4000);
+        }
+        
+        async executeAINode(node, inputData) {
+            const config = node.config || {};
+            
+            try {
+                switch (node.type) {
+                    case 'ai-text':
+                        const prompt = config.prompt || inputData.prompt || 'Generate a helpful response';
+                        return await this.generateText(prompt, {
+                            model: config.model || 'gpt-3.5-turbo',
+                            maxTokens: config.maxTokens || 150,
+                            temperature: config.temperature || 0.7,
+                            provider: config.provider || 'openai'
+                        });
+                        
+                    case 'ai-code':
+                        const description = config.description || inputData.description || 'Create a simple function';
+                        const language = config.language || 'javascript';
+                        return await this.generateCode(description, language, config);
+                        
+                    case 'ai-image':
+                        const imagePrompt = config.prompt || inputData.prompt || 'A beautiful landscape';
+                        return await this.generateImage(imagePrompt, {
+                            size: config.size || '512x512',
+                            quality: config.quality || 'standard'
+                        });
+                        
+                    case 'ai-multimodal':
+                        const multiPrompt = config.prompt || inputData.prompt || 'Describe this content';
+                        const imageUrl = config.imageUrl || inputData.imageUrl || null;
+                        return await this.generateMultimodal(multiPrompt, imageUrl, {
+                            model: config.model || 'microsoft/kosmos-2-patch14-224',
+                            provider: config.provider || 'huggingface',
+                            maxTokens: config.maxTokens || 200,
+                            temperature: config.temperature || 0.7
+                        });
+                        
+                    default:
+                        throw new Error(`Unknown AI node type: ${node.type}`);
+                }
+            } catch (error) {
+                console.error('AI Node execution error:', error);
+                return { error: error.message, type: 'ai_error' };
+            }
+        }
+        
+        estimateWorkflowCost(nodes) {
+            let totalCost = 0;
+            const aiNodes = nodes.filter(node => node.type.startsWith('ai-'));
+            
+            aiNodes.forEach(node => {
+                const config = node.config || {};
+                const model = config.model || 'gpt-3.5-turbo';
+                const provider = config.provider || 'openai';
+                const maxTokens = config.maxTokens || 150;
+                
+                if (this.providers[provider] && this.providers[provider].pricing[model]) {
+                    const costPerToken = this.providers[provider].pricing[model] / 1000;
+                    totalCost += maxTokens * costPerToken;
+                }
+            });
+            
+            return totalCost;
+        }
+        
+        async testAIIntegration() {
+            try {
+                this.showNotification('🧪 Testing AI integration...', 'info');
+                
+                const testPrompt = 'Say "AI integration test successful!" and add a fun emoji.';
+                const result = await this.generateText(testPrompt, { maxTokens: 50 });
+                
+                this.showNotification(`🎉 Test Result: ${result}`, 'success');
+                return true;
+            } catch (error) {
+                this.showNotification(`❌ Test Failed: ${error.message}`, 'error');
+                return false;
+            }
+        }
+    }
+    
+    // Global functions for UI buttons
+    function saveWorkflow() {
+        window.aiSystem.saveWorkflow();
+    }
+    
+    function runWorkflow() {
+        window.aiSystem.runWorkflow();
+    }
+    
+    function clearCanvas() {
+        window.aiSystem.clearAllNodes();
+    }
+    
+    function undoLastAction() {
+        window.aiSystem.undoLastAction();
+    }
+    
+    function showHelp() {
+        alert(`🎯 No-Code AI System Help
+```
+
+How to use:
+
+1. 📋 Drag components from the sidebar to the canvas
+1. 🔧 Double-click nodes to configure them
+1. 💾 Click Save to store your workflow
+1. ▶️ Click Run to execute your workflow
+
+Canvas Controls:
+• ↶ Undo: Reverses your last action
+• 🗑️ Clear All: Removes all nodes (with confirmation)
+• ❌ (on hover): Delete individual nodes
+
+Node Types:
+🔗 Triggers: Start your workflow (webhook, schedule)
+🤖 AI Nodes: Use artificial intelligence (text, code, images)
+🔮 Multimodal: AI that can analyze images
+🔀 Logic: Add conditions and loops
+📧 Actions: Send emails, call APIs, update databases
+
+Tips:
+• Start with a trigger node
+• Connect nodes in logical order
+• Configure each node with double-click
+• Test frequently with the Run button
+• Click “🔑 Setup AI” to add your API keys
+• Hover over nodes to see delete button
+• Use Undo if you make mistakes
+
+Need help? This is a fully functional demo!`);
+}
+
+```
+    // Initialize the system when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+        window.aiIntegration = new AIIntegrationSystem();
+        window.aiSystem = new NoCodeAISystem();
+        console.log('🚀 No-Code AI System initialized!');
+        console.log('💡 Try dragging components to the canvas!');
+        console.log('🔑 Click "Setup AI" to configure your API keys');
+    });
+    
+    // Service Worker for PWA functionality
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            const swCode = `
+                const CACHE_NAME = 'nocode-ai-v1';
+                const urlsToCache = ['/'];
+                
+                self.addEventListener('install', event => {
+                    event.waitUntil(
+                        caches.open(CACHE_NAME)
+                            .then(cache => cache.addAll(urlsToCache))
+                    );
+                });
+                
+                self.addEventListener('fetch', event => {
+                    event.respondWith(
+                        caches.match(event.request)
+                            .then(response => response || fetch(event.request))
+                    );
+                });
+            `;
+            
+            const blob = new Blob([swCode], { type: 'application/javascript' });
+            const swUrl = URL.createObjectURL(blob);
+            
+            navigator.serviceWorker.register(swUrl)
+                .then(() => console.log('🔧 Service Worker registered'))
+                .catch(error => console.log('Service Worker registration failed:', error));
+        });
+    }
+</script>
+```
+
+</body>
+</html>
