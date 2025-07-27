@@ -1,7 +1,7 @@
 @ -0,0 +1,41 @@
 readme.md
 
-# 🚀 No-Code AI System
+# 🚀 incandescent-pie-68591b
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Available-brightgreen)](https://incandescent-pie-68591b.netlify.app/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -33,10 +33,10 @@ readme.md
 
 ```bash
 # Clone the repository
-git clone https://github.com/mishaelv87/nocode-ai-system.git
+git clone https://github.com/mishaelv87/incandescent-pie-68591b.git
 SHSAL
 # Navigate to the project
-cd nocode-ai-system
+cd incandescent-pie-68591b
 
 # Open in browser
 open index.html
